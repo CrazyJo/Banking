@@ -17,10 +17,14 @@ namespace Banking.Data.Repositories
         protected DbSet<TEntity> DbSet { get; set; }
         protected DbContext DbContext { get; set; }
 
-        public EntityRepository(IDbFactory factory)
+        public EntityRepository(DbContext context)
         {
-            DbContext = factory.GetContext();
+            DbContext = context;
             DbSet = DbContext.Set<TEntity>();
+        }
+
+        public EntityRepository(IDbFactory factory) : this(factory.GetContext())
+        {
         }
 
         public virtual IQueryable<TEntity> GetAll()

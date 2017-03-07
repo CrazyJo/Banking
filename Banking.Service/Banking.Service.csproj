@@ -30,7 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,11 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankOperationEx.cs" />
     <Compile Include="BankingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserService.cs" />
+    <Compile Include="SignInManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Banking.Core\Banking.Core.csproj">
+      <Project>{fc3ac2d2-807c-49e4-aee2-76cb73235fad}</Project>
+      <Name>Banking.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Banking.Data\Banking.Data.csproj">
       <Project>{624c4180-eebb-49d5-858c-77b623655bba}</Project>
       <Name>Banking.Data</Name>
@@ -53,6 +67,10 @@
       <Project>{4a674eeb-180d-4850-b7a2-7ba524b910b2}</Project>
       <Name>Banking.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

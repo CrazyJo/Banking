@@ -5,6 +5,12 @@ using System.Threading.Tasks;
 
 namespace Banking.Data.Infrastructure
 {
+    public interface IUnitOfWork : IDisposable
+    {
+        Task<int> CommitAsync();
+        Task<int> CommitAsync(CancellationToken token);
+    }
+
     public class UnitOfWork : IUnitOfWork
     {
         public DbContext Context { get; }
@@ -15,14 +21,14 @@ namespace Banking.Data.Infrastructure
             Context = factory.GetContext();
         }
 
-        public async Task CommitAsync()
+        public Task<int> CommitAsync()
         {
-            await CommitAsync(CancellationToken.None);
+            return CommitAsync(CancellationToken.None);
         }
 
-        public async Task CommitAsync(CancellationToken token)
+        public Task<int> CommitAsync(CancellationToken token)
         {
-            await Context.SaveChangesAsync(token);
+            return Context.SaveChangesAsync(token);
         }
 
         public void Dispose()

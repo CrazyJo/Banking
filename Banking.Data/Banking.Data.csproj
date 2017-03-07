@@ -53,8 +53,9 @@
     <Compile Include="Configurations\TransactionConfig.cs" />
     <Compile Include="Configurations\UserConfig.cs" />
     <Compile Include="Contexts\BankingContext.cs" />
+    <Compile Include="Infrastructure\BankingUoW.cs" />
+    <Compile Include="Infrastructure\BankingUoWFactory.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
-    <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\BankingContextFactory.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Initializers\BankingInitializer.cs" />
